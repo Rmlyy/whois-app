@@ -14,34 +14,27 @@
     <title>WHOIS</title>
 </head>
 <body>
-    <% if (error) { %>
-        <div class="centered">
-            <p><pre><%- error %></pre></p>
-            <p><a href="/">Home</a></p>
-        </div>
-    <% } else { %>
-        <h2>Target:</h2>
-        <input type="text" id="domain">
-        <input type="submit" id="submit" onclick="document.location = document.getElementById('domain').value">
+    <h2>Target:</h2>
+    <input type="text" id="domain">
+    <input type="submit" id="submit" onclick="document.location = document.getElementById('domain').value">
 
-        <% if (data) { %>
-            <hr>
-            <p>Cached: <b><%- cached %></b> -> <a href="/">Home</a></p>
-            <div><textarea rows="50" cols="100" readonly><%- data %></textarea></div>
-          <% } %>
+    <% if (data) { %>
+        <hr>
+        <p>Cached: <b><%- cached %></b> -> <a href="/">Home</a></p>
+        <div><textarea rows="50" cols="100" readonly><%- data %></textarea></div>
+        <% } %>
 
-          <p><a href="https://github.com/Rmlyy/whois-app" target="_blank">This project is open source</a></p>
-          <p><a href="https://paypal.me/Rmlyy" target="_blank">Donate here</a></p>
+        <p><a href="https://github.com/Rmlyy/whois-app" target="_blank">This project is open source</a></p>
+        <p><a href="https://paypal.me/Rmlyy" target="_blank">Donate here</a></p>
 
-          <script>
+        <script>
             const input = document.getElementById('domain')
             input.addEventListener('keyup', function(event) {
               if (event.keyCode === 13) {
                event.preventDefault()
                document.getElementById('submit').click()
               }
-            })
+            })  
         </script>
-    <% } %>
 </body>
 </html>

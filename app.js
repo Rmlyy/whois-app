@@ -1,9 +1,9 @@
 const express = require('express')
-const whois = require('whois')
 const fs = require('fs')
 const config = require('./config')
 const cache = require('./cache')
 const app = new express()
+const { spawn } = require('child_process')
 
 if (!fs.existsSync('./cache')) fs.mkdirSync('./cache')
 
@@ -20,10 +20,15 @@ app.get('/:target', (req, res) => {
     if (!target) return res.status('400').send('No target specified.')
     if (cache.has(target)) return res.render('view', { data: cache.get(target), cached: 'Yes', error: null })
 
-    whois.lookup(target, function (err, data) {
-        if (err) return res.status('500').render('view', {data: null, cached: null, error: err.message })
-        cache.add(target, data)
-        res.render('view', { data: data, cached: 'No', error: null })
+    const args = [target]
+    const cmd = '/bin/whois'
+    const subprocess = spawn(cmd, args)
+    let stdout = ''
+    subprocess.stdout.on('data', function (data) { stdout += data} )
+
+    subprocess.on('close', () => {
+        cache.add(target, stdout)
+        res.render('view', { data: stdout, cached: 'No', error: null })
     })
 })
 

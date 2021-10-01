@@ -48,11 +48,3 @@ hr {
     border-color: rgb(214, 163, 23);
     margin-left: 0px;
 }
-
-.centered {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    height: 95vh;
-}
