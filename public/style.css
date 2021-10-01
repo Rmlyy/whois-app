@@ -1,0 +1,58 @@
+body {
+    background-color: rgb(26, 25, 23);
+    color: rgb(214, 163, 23);
+    font-family: sans-serif;
+    font-size: 2.2vh;
+    margin-left: 3vh;
+}
+
+input[type=text] {
+    padding: 5px 5px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    font-family: inherit;
+    background-color: rgb(70, 66, 60);
+    color: inherit;
+    font-size: inherit;
+}
+
+input[type=submit] {
+    background-color: inherit;
+    border: none;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+textarea {
+    resize: none;
+    background-color: inherit;
+    color: inherit;
+}
+
+hr {
+    max-width: 45%;
+    border-color: rgb(214, 163, 23);
+    margin-left: 0px;
+}
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 95vh;
+}

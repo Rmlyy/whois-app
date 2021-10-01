@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#D6A317">
+    <meta property="og:title" content="WHOIS">
+    <meta property="og:description" content="Simple and efficient WHOIS app">
+    <meta property="og:image" content="https://whois.rmly.dev/logo.png">
+    <meta property="og:url" content="https://whois.rmly.dev">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <title>WHOIS</title>
+</head>
+<body>
+    <% if (error) { %>
+        <div class="centered">
+            <p><pre><%- error %></pre></p>
+            <p><a href="/">Home</a></p>
+        </div>
+    <% } else { %>
+        <h2>Target:</h2>
+        <input type="text" id="domain">
+        <input type="submit" id="submit" onclick="document.location = document.getElementById('domain').value">
+
+        <% if (data) { %>
+            <hr>
+            <p>Cached: <b><%- cached %></b> -> <a href="/">Home</a></p>
+            <div><textarea rows="50" cols="100" readonly><%- data %></textarea></div>
+          <% } %>
+
+          <p><a href="https://github.com/Rmlyy/whois-app" target="_blank">This project is open source</a></p>
+          <p><a href="https://paypal.me/Rmlyy" target="_blank">Donate here</a></p>
+
+          <script>
+            const input = document.getElementById('domain')
+            input.addEventListener('keyup', function(event) {
+              if (event.keyCode === 13) {
+               event.preventDefault()
+               document.getElementById('submit').click()
+              }
+            })
+        </script>
+    <% } %>
+</body>
+</html>
